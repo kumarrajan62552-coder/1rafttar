@@ -20,27 +20,45 @@
     <!-- End Meta Pixel Code -->
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1Raftaar - Official Android Application</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        html, body {
+            min-height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
             background:
-                radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.2) 0%, transparent 48%),
                 radial-gradient(circle at top, #0b2342 0%, #051020 58%, #020711 100%);
-            min-height: 100vh;
-            text-rendering: geometricPrecision;
+            color: #ffffff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: geometricPrecision;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
         }
 
         .main-card {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 28px;
+            padding: 34px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             background: linear-gradient(180deg, rgba(12, 32, 59, 0.97) 0%, rgba(7, 20, 38, 0.99) 100%);
             border: 1px solid rgba(56, 189, 248, 0.28);
             box-shadow:
@@ -50,6 +68,14 @@
         }
 
         .logo-ring {
+            width: 112px;
+            height: 112px;
+            border-radius: 9999px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
             background: conic-gradient(from 140deg, #38bdf8, #0284c7, #10b981, #22d3ee, #38bdf8);
             box-shadow:
                 0 0 36px rgba(14, 165, 233, 0.48),
@@ -57,32 +83,261 @@
         }
 
         .logo-core {
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #07192d;
             background: radial-gradient(circle at 35% 28%, #38bdf8 0%, #0284c7 52%, #062544 100%);
         }
 
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            background: #0d2440;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #7dd3fc;
+            margin-bottom: 16px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: #34d399;
+            box-shadow: 0 0 8px #34d399;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .title span {
+            color: #34d399;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 6px;
+            margin-bottom: 24px;
+        }
+
+        .info-strip {
+            width: 100%;
+            background: #0b1f38;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #7dd3fc;
+        }
+
+        .info-item.secondary {
+            color: #e2e8f0;
+        }
+
+        .info-divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(148, 163, 184, 0.45);
+        }
+
         .cta-btn {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 12px;
             background: linear-gradient(180deg, #2b8fff 0%, #0e63db 100%);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
             box-shadow:
                 0 12px 28px rgba(20, 115, 235, 0.48),
                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
         }
 
         .cta-btn:hover {
-            background: linear-gradient(180deg, #3b9aff 0%, #156ee8 100%);
+            filter: brightness(1.08);
             box-shadow:
                 0 15px 34px rgba(37, 137, 245, 0.62),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        .status-box {
+            display: none;
+            width: 100%;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            color: #6ee7b7;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .status-box.visible {
+            display: block;
+        }
+
+        .security-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .helper-text {
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.5;
+            max-width: 300px;
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen px-4 py-8 text-white antialiased selection:bg-sky-500/30 selection:text-sky-200">
+<body>
 
-    <!-- Main Centered Card -->
-    <main class="main-card w-full max-w-[400px] rounded-[28px] px-6 py-8 sm:px-8 sm:py-9 flex flex-col items-center text-center">
-
-        <!-- Ultra-Sharp Vector Emblem Logo -->
-        <div class="logo-ring w-28 h-28 rounded-full p-[3px] flex items-center justify-center mb-5">
-            <div class="logo-core w-full h-full rounded-full flex flex-col items-center justify-center relative overflow-hidden border-2 border-[#07192d]">
-                <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+    <main class="main-card">
+        <div class="logo-ring">
+            <div class="logo-core">
+                <svg width="106" height="106" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
                     <defs>
-                        <linearGradient id="glossGrad" x1="20" y1="15" x2="100"
+                        <linearGradient id="glossGrad" x1="20" y1="15" x2="100" y2="70" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="60" cy="30" rx="42" ry="22" fill="url(#glossGrad)"/>
+                    <path d="M22 64C42 54 78 54 98 64" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round"/>
+                    <text x="60" y="67" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="900" text-anchor="middle" letter-spacing="-1">1R</text>
+                    <text x="60" y="85" fill="#e0f2fe" font-family="Arial, sans-serif" font-size="8.5" font-weight="800" text-anchor="middle" letter-spacing="2.4">RAFTAAR</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            <span>ANDROID APP</span>
+        </div>
+
+        <h1 class="title">1<span>RAFTAAR</span></h1>
+        <p class="subtitle">Official Android Application</p>
+
+        <div class="info-strip">
+            <div class="info-item">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="6" y="2" width="12" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <span>Android APK</span>
+            </div>
+
+            <span class="info-divider"></span>
+
+            <div class="info-item secondary">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.57l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.57l7-10a1 1 0 011.12-.384z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Direct Download</span>
+            </div>
+        </div>
+
+        <button id="downloadBtn" type="button" class="cta-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"></path>
+            </svg>
+            <span>DOWNLOAD APK</span>
+        </button>
+
+        <div id="downloadStatus" class="status-box" role="status" aria-live="polite">
+            APK download started. Check your browser notifications or Downloads folder.
+        </div>
+
+        <div class="security-label">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+            </svg>
+            <span>DIRECT APK DOWNLOAD</span>
+        </div>
+
+        <p class="helper-text">
+            Download the APK, open the file on your Android device, and follow the installation prompts.
+        </p>
+    </main>
+
+    <script>
+        (function () {
+            var downloadBtn = document.getElementById('downloadBtn');
+            var downloadStatus = document.getElementById('downloadStatus');
+            var downloadUrl = 'https://1raftaar.vercel.app/1raftaar.apk';
+
+            if (!downloadBtn) return;
+
+            downloadBtn.addEventListener('click', function () {
+                try {
+                    var link = document.createElement('a');
+                    link.href = downloadUrl;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (err) {
+                    window.location.href = downloadUrl;
+                }
+
+                if (downloadStatus) {
+                    downloadStatus.classList.add('visible');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
